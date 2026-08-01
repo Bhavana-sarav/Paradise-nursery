@@ -1,85 +1,138 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  increaseQuantity,
-  decreaseQuantity,
+  addItem,
   removeItem,
-  clearCart,
+  updateQuantity,
 } from "../redux/CartSlice";
 import "./CartItem.css";
 
 const CartItem = () => {
   const dispatch = useDispatch();
 
-  const { cartItems, totalItems, totalAmount } = useSelector(
-    (state) => state.cart
-  );
+  const {
+    cartItems,
+    totalQuantity,
+    totalAmount,
+  } = useSelector((state) => state.cart);
+
+  const increaseQuantity = (item) => {
+    dispatch(addItem(item));
+  };
+
+  const decreaseQuantity = (item) => {
+    if (item.quantity > 1) {
+      dispatch(
+        updateQuantity({
+          id: item.id,
+          quantity: item.quantity - 1,
+        })
+      );
+    } else {
+      dispatch(removeItem(item.id));
+    }
+  };
+
+  const deleteItem = (id) => {
+    dispatch(removeItem(id));
+  };
 
   return (
     <div className="cart-container">
 
-      <div className="cart-header">
+      <header className="cart-header">
         <h1>🛒 Shopping Cart</h1>
+
         <p>
-          Review the plants you have selected before placing your order.
+          Review your selected plants before placing your order.
         </p>
-      </div>
+      </header>
 
       {cartItems.length === 0 ? (
+
         <div className="empty-cart">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
-            alt="Empty Cart"
-            width="180"
-          />
 
           <h2>Your Cart is Empty</h2>
 
           <p>
-            It looks like you haven't added any plants yet.
-            Browse our collection and add your favorite plants to begin
-            shopping.
+            Browse our collection and add your favorite plants to begin shopping.
           </p>
+
+          <button
+            className="continue-btn"
+            onClick={() => window.history.back()}
+          >
+            Continue Shopping
+          </button>
+
         </div>
+
       ) : (
+
         <>
+          <div className="cart-summary">
+
+            <div className="summary-card">
+              <h3>Total Items</h3>
+              <p>{totalQuantity}</p>
+            </div>
+
+            <div className="summary-card">
+              <h3>Total Amount</h3>
+              <p>₹ {totalAmount.toFixed(2)}</p>
+            </div>
+
+          </div>
+
           <div className="cart-list">
 
             {cartItems.map((item) => (
 
-              <div className="cart-card" key={item.id}>
+              <div
+                className="cart-card"
+                key={item.id}
+              >
 
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="product-image"
+                  className="plant-image"
                 />
 
-                <div className="product-details">
+                <div className="plant-details">
 
                   <h2>{item.name}</h2>
 
-                  <p>
-                    <strong>Category:</strong> {item.category}
-                  </p>
+                  <p>{item.description}</p>
 
-                  <p>
-                    {item.description}
-                  </p>
+                  <h3>
+                    Category: {item.category}
+                  </h3>
 
-                  <h3>₹ {item.price}</h3>
+                  <h3>
+                    Price: ₹ {item.price}
+                  </h3>
+
+                  <h3>
+                    Quantity: {item.quantity}
+                  </h3>
+
+                  <h3>
+                    Subtotal: ₹{" "}
+                    {(item.price * item.quantity).toFixed(2)}
+                  </h3>
 
                 </div>
 
-                <div className="quantity-section">
+                <div className="cart-actions">
 
                   <button
-                    className="qty-btn"
+                    className="quantity-btn"
                     onClick={() =>
-                      dispatch(decreaseQuantity(item.id))
+                      decreaseQuantity(item)
                     }
                   >
-                    −
+                    -
                   </button>
 
                   <span className="quantity">
@@ -87,29 +140,21 @@ const CartItem = () => {
                   </span>
 
                   <button
-                    className="qty-btn"
+                    className="quantity-btn"
                     onClick={() =>
-                      dispatch(increaseQuantity(item.id))
+                      increaseQuantity(item)
                     }
                   >
                     +
                   </button>
 
-                </div>
-
-                <div className="subtotal">
-
-                  <h3>
-                    ₹ {item.price * item.quantity}
-                  </h3>
-
                   <button
                     className="remove-btn"
                     onClick={() =>
-                      dispatch(removeItem(item.id))
+                      deleteItem(item.id)
                     }
                   >
-                    Remove
+                    Remove Item
                   </button>
 
                 </div>
@@ -120,53 +165,33 @@ const CartItem = () => {
 
           </div>
 
-          <div className="cart-summary">
-
-            <h2>Order Summary</h2>
-
-            <hr />
-
-            <div className="summary-row">
-              <span>Total Items</span>
-              <span>{totalItems}</span>
-            </div>
-
-            <div className="summary-row">
-              <span>Total Amount</span>
-              <span>₹ {totalAmount}</span>
-            </div>
-
-            <div className="summary-row">
-              <span>Delivery Charges</span>
-              <span>FREE</span>
-            </div>
-
-            <div className="summary-row">
-              <span>GST</span>
-              <span>Included</span>
-            </div>
-
-            <hr />
+          <div className="checkout-section">
 
             <h2>
-              Grand Total : ₹ {totalAmount}
+              Grand Total : ₹ {totalAmount.toFixed(2)}
             </h2>
 
-            <button
-              className="checkout-btn"
-              onClick={() =>
-                alert("Order placed successfully!")
-              }
-            >
-              Proceed to Checkout
-            </button>
+            <div className="checkout-buttons">
 
-            <button
-              className="clear-btn"
-              onClick={() => dispatch(clearCart())}
-            >
-              Clear Cart
-            </button>
+              <button
+                className="continue-btn"
+                onClick={() => window.history.back()}
+              >
+                Continue Shopping
+              </button>
+
+              <button
+                className="checkout-btn"
+                onClick={() =>
+                  alert(
+                    "Thank you for shopping with Paradise Nursery!"
+                  )
+                }
+              >
+                Proceed to Checkout
+              </button>
+
+            </div>
 
           </div>
         </>
@@ -175,11 +200,10 @@ const CartItem = () => {
       <footer className="cart-footer">
 
         <p>
-          Paradise Nursery © 2026 | Bringing Nature Closer to Your Home
+          Paradise Nursery © 2026 | Growing Happiness One Plant at a Time
         </p>
 
       </footer>
-
     </div>
   );
 };
