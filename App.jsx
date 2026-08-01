@@ -1,218 +1,175 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 
 function App() {
-  const [started, setStarted] = useState(false);
-
   const handleGetStarted = () => {
-    setStarted(true);
-    alert("Welcome to Paradise Nursery!");
+    alert("Welcome to Paradise Nursery! Explore our beautiful collection of indoor and outdoor plants.");
   };
 
   return (
     <div className="App">
-
       {/* Navigation Bar */}
-
-      <nav className="navbar">
+      <header className="navbar">
         <div className="logo">
           🌿 Paradise Nursery
         </div>
 
-        <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#plants">Plants</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+        <nav>
+          <ul className="nav-links">
+            <li>Home</li>
+            <li>Plants</li>
+            <li>About</li>
+            <li>Services</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+      </header>
 
       {/* Landing Page */}
+      <main className="landing-page">
+        <div className="landing-content">
 
-      <section className="hero" id="home">
+          <h1>Paradise Nursery</h1>
 
-        <div className="hero-content">
-
-          <h1>Welcome to Paradise Nursery</h1>
-
-          <h2>Bringing Nature Closer to Your Home</h2>
+          <h2>Bring Nature Home</h2>
 
           <p>
-            Paradise Nursery is your one-stop destination for beautiful
-            indoor plants, outdoor plants, flowering plants, decorative
-            pots, gardening accessories, and eco-friendly gardening
-            solutions.
+            Welcome to Paradise Nursery, your trusted destination for healthy,
+            vibrant, and beautiful plants. We are passionate about helping
+            people create greener homes, healthier workplaces, and peaceful
+            gardens through carefully selected indoor and outdoor plants.
           </p>
 
           <p>
-            We believe every home deserves a touch of greenery.
-            Our carefully selected collection of healthy plants
-            helps improve air quality, reduce stress, and create
-            a peaceful living environment.
+            Our nursery offers a wide variety of ornamental plants, flowering
+            plants, succulents, bonsai, medicinal herbs, air-purifying plants,
+            and decorative pots suitable for homes, offices, balconies, and
+            gardens. Every plant is nurtured with care to ensure exceptional
+            quality and long-lasting freshness.
           </p>
 
-          <button
-            className="btn"
-            onClick={handleGetStarted}
-          >
-            {started ? "Explore Plants" : "Get Started"}
+          <p>
+            Whether you are a beginner starting your gardening journey or an
+            experienced plant enthusiast, Paradise Nursery provides everything
+            you need to build your own green paradise. Our mission is to promote
+            sustainable living and inspire everyone to reconnect with nature.
+          </p>
+
+          <button className="shop-btn" onClick={handleGetStarted}>
+            Get Started
           </button>
 
         </div>
+      </main>
 
+      {/* About Section */}
+      <section className="about-section">
+        <div className="container">
+
+          <h2>Why Choose Paradise Nursery?</h2>
+
+          <div className="features">
+
+            <div className="feature-card">
+              <h3>🌱 Premium Quality Plants</h3>
+              <p>
+                Every plant is carefully grown and inspected before reaching
+                customers to ensure freshness and excellent health.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3>🚚 Fast Delivery</h3>
+              <p>
+                We deliver plants safely using eco-friendly packaging to protect
+                every order during transportation.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3>💚 Expert Guidance</h3>
+              <p>
+                Our gardening experts provide plant care tips and maintenance
+                guidance to help your plants thrive.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
       </section>
 
-      {/* About Company */}
-
-      <section className="categories" id="about">
-
-        <h2>About Paradise Nursery</h2>
-
-        <p>
-          Paradise Nursery is dedicated to providing premium-quality
-          plants and exceptional gardening products. Our experienced
-          horticulture experts ensure that every plant is nurtured
-          with care before reaching your home.
-
-          We aim to inspire people to create greener spaces through
-          sustainable gardening practices and affordable plant
-          collections suitable for homes, offices, schools, and
-          commercial spaces.
-        </p>
-
-      </section>
-
-      {/* Features */}
-
-      <section className="features" id="services">
-
-        <div className="card">
-          <h3>🌱 Healthy Plants</h3>
-
-          <p>
-            Every plant is carefully inspected to ensure excellent
-            health and long-lasting freshness before delivery.
-          </p>
-        </div>
-
-        <div className="card">
-          <h3>🚚 Fast Delivery</h3>
-
-          <p>
-            We provide safe and secure doorstep delivery with
-            protective packaging across multiple cities.
-          </p>
-        </div>
-
-        <div className="card">
-          <h3>🌎 Eco-Friendly</h3>
-
-          <p>
-            We promote sustainable gardening and environmentally
-            responsible packaging materials.
-          </p>
-        </div>
-
-        <div className="card">
-          <h3>⭐ Expert Support</h3>
-
-          <p>
-            Our gardening experts provide plant care tips,
-            maintenance guides, and personalized recommendations.
-          </p>
-        </div>
-
-      </section>
-
-      {/* Plant Categories */}
-
-      <section className="categories" id="plants">
-
+      {/* Categories */}
+      <section className="categories">
         <h2>Popular Plant Categories</h2>
 
         <div className="category-grid">
 
-          <div className="category-box">
+          <div className="card">
             <h3>Indoor Plants</h3>
-
             <p>
-              Air-purifying plants perfect for homes and offices.
+              Beautiful indoor plants that improve air quality and brighten your
+              living spaces.
             </p>
           </div>
 
-          <div className="category-box">
+          <div className="card">
             <h3>Outdoor Plants</h3>
-
             <p>
-              Beautiful garden plants suitable for all seasons.
+              Decorative garden plants suitable for balconies, terraces, and
+              outdoor landscapes.
             </p>
           </div>
 
-          <div className="category-box">
+          <div className="card">
             <h3>Flowering Plants</h3>
-
             <p>
-              Colorful flowers that brighten every outdoor space.
+              Colorful flowering plants that enhance the beauty of your home and
+              garden.
             </p>
           </div>
 
-          <div className="category-box">
+          <div className="card">
             <h3>Succulents</h3>
-
             <p>
-              Low-maintenance decorative plants for modern interiors.
-            </p>
-          </div>
-
-          <div className="category-box">
-            <h3>Bonsai Collection</h3>
-
-            <p>
-              Artistic miniature trees crafted with elegance.
-            </p>
-          </div>
-
-          <div className="category-box">
-            <h3>Medicinal Plants</h3>
-
-            <p>
-              Natural herbs known for their traditional health benefits.
+              Low-maintenance succulents perfect for modern homes and office
+              desks.
             </p>
           </div>
 
         </div>
-
       </section>
 
-      {/* Contact */}
+      {/* Company Information */}
+      <section className="company-info">
+        <h2>Our Commitment</h2>
 
-      <section className="categories" id="contact">
+        <p>
+          Paradise Nursery is committed to promoting environmental sustainability
+          by encouraging people to plant more trees and care for nature. Our
+          experienced horticulture team ensures that every plant receives proper
+          attention before reaching our customers.
+        </p>
 
-        <h2>Contact Us</h2>
-
-        <p><strong>Paradise Nursery Pvt. Ltd.</strong></p>
-
-        <p>123 Green Garden Road</p>
-
-        <p>Bengaluru, Karnataka - 560001</p>
-
-        <p>Email: info@paradisenursery.com</p>
-
-        <p>Phone: +91 9876543210</p>
-
+        <p>
+          Customer satisfaction remains our highest priority. We continuously
+          improve our services by offering quality products, affordable prices,
+          secure delivery, and dedicated customer support.
+        </p>
       </section>
 
       {/* Footer */}
-
       <footer className="footer">
+        <h3>Paradise Nursery</h3>
+
+        <p>
+          Growing Happiness, One Plant at a Time.
+        </p>
 
         <p>
           © 2026 Paradise Nursery. All Rights Reserved.
         </p>
-
       </footer>
-
     </div>
   );
 }
