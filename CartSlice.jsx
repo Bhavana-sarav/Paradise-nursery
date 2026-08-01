@@ -1,41 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 /*
-==========================================================
- Paradise Nursery - CartSlice.jsx
-
- Description:
- Redux Toolkit slice responsible for managing the
- shopping cart state.
-
+=========================================================
+ Paradise Nursery Shopping Cart Slice
+---------------------------------------------------------
+ This Redux slice manages all shopping cart operations.
  Features:
- • Add new products
- • Remove products
- • Increase quantity
- • Decrease quantity
- • Update quantity directly
- • Calculate total items
- • Calculate total amount
- • Clear entire cart
-==========================================================
+ - Add items to cart
+ - Remove items from cart
+ - Update item quantity
+ - Calculate total quantity
+ - Calculate total amount
+=========================================================
 */
 
 const initialState = {
   cartItems: [],
-  totalItems: 0,
+  totalQuantity: 0,
   totalAmount: 0,
 };
 
 const calculateTotals = (state) => {
-  state.totalItems = state.cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  let quantity = 0;
+  let amount = 0;
 
-  state.totalAmount = state.cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  state.cartItems.forEach((item) => {
+    quantity += item.quantity;
+    amount += item.quantity * item.price;
+  });
+
+  state.totalQuantity = quantity;
+  state.totalAmount = Number(amount.toFixed(2));
 };
 
 const cartSlice = createSlice({
@@ -44,15 +39,18 @@ const cartSlice = createSlice({
   initialState,
 
   reducers: {
-    /*
-    ==================================================
-    ADD ITEM
-    Adds a new product or increases quantity if
-    product already exists.
-    ==================================================
-    */
 
+    /*
+    =========================================================
+    ADD ITEM
+    ---------------------------------------------------------
+    Checks whether the product already exists.
+    If yes, increases quantity.
+    Otherwise inserts a new product.
+    =========================================================
+    */
     addItem: (state, action) => {
+
       const product = action.payload;
 
       const existingItem = state.cartItems.find(
@@ -68,6 +66,7 @@ const cartSlice = createSlice({
           price: product.price,
           image: product.image,
           category: product.category,
+          description: product.description,
           quantity: 1,
         });
       }
@@ -76,13 +75,14 @@ const cartSlice = createSlice({
     },
 
     /*
-    ==================================================
+    =========================================================
     REMOVE ITEM
-    Completely removes a product from the cart.
-    ==================================================
+    ---------------------------------------------------------
+    Removes the selected product completely from cart.
+    =========================================================
     */
-
     removeItem: (state, action) => {
+
       const productId = action.payload;
 
       state.cartItems = state.cartItems.filter(
@@ -93,117 +93,41 @@ const cartSlice = createSlice({
     },
 
     /*
-    ==================================================
+    =========================================================
     UPDATE QUANTITY
-
-    Accepts:
-    {
-      id: 1,
-      quantity: 4
-    }
-
-    ==================================================
+    ---------------------------------------------------------
+    Updates the quantity based on user action.
+    Prevents quantity from becoming less than 1.
+    =========================================================
     */
-
     updateQuantity: (state, action) => {
+
       const { id, quantity } = action.payload;
 
-      const item = state.cartItems.find(
-        (product) => product.id === id
+      const existingItem = state.cartItems.find(
+        (item) => item.id === id
       );
 
-      if (item) {
-        if (quantity <= 0) {
-          state.cartItems = state.cartItems.filter(
-            (product) => product.id !== id
-          );
+      if (existingItem) {
+
+        if (quantity > 0) {
+          existingItem.quantity = quantity;
         } else {
-          item.quantity = quantity;
+          existingItem.quantity = 1;
         }
+
       }
 
       calculateTotals(state);
     },
 
-    /*
-    ==================================================
-    INCREASE QUANTITY
-    ==================================================
-    */
-
-    increaseQuantity: (state, action) => {
-      const id = action.payload;
-
-      const item = state.cartItems.find(
-        (product) => product.id === id
-      );
-
-      if (item) {
-        item.quantity += 1;
-      }
-
-      calculateTotals(state);
-    },
-
-    /*
-    ==================================================
-    DECREASE QUANTITY
-    ==================================================
-    */
-
-    decreaseQuantity: (state, action) => {
-      const id = action.payload;
-
-      const item = state.cartItems.find(
-        (product) => product.id === id
-      );
-
-      if (item) {
-        if (item.quantity > 1) {
-          item.quantity -= 1;
-        } else {
-          state.cartItems = state.cartItems.filter(
-            (product) => product.id !== id
-          );
-        }
-      }
-
-      calculateTotals(state);
-    },
-
-    /*
-    ==================================================
-    CLEAR CART
-    ==================================================
-    */
-
-    clearCart: (state) => {
-      state.cartItems = [];
-      state.totalItems = 0;
-      state.totalAmount = 0;
-    },
   },
 });
-
-/*
-==================================================
-Export Reducer Functions
-==================================================
-*/
 
 export const {
   addItem,
   removeItem,
   updateQuantity,
-  increaseQuantity,
-  decreaseQuantity,
-  clearCart,
 } = cartSlice.actions;
-
-/*
-==================================================
-Export Cart Reducer
-==================================================
-*/
 
 export default cartSlice.reducer;
