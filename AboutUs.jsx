@@ -5,196 +5,238 @@ const AboutUs = () => {
   return (
     <div className="about-container">
 
-      <header className="about-header">
-        <h1>About Our Company</h1>
+      {/* Header Section */}
+      <section className="hero-section">
+        <h1>About TechNova Solutions</h1>
         <p>
-          Delivering innovative technology solutions that empower businesses
-          and improve lives across the globe.
+          Empowering businesses through innovative software solutions,
+          cutting-edge technologies, and customer-centric digital services.
         </p>
-      </header>
+      </section>
 
+      {/* Company Introduction */}
       <section className="about-section">
         <h2>Who We Are</h2>
-
         <p>
-          TechNova Solutions Pvt. Ltd. is a leading software development
-          company committed to delivering innovative, reliable, and
-          high-performance digital solutions. Since our establishment, we have
-          been helping businesses transform their ideas into scalable web,
-          mobile, and cloud-based applications.
+          TechNova Solutions is a modern software development company dedicated
+          to providing innovative, scalable, and high-quality digital solutions
+          for businesses of all sizes. Since our establishment, we have focused
+          on helping organizations embrace digital transformation through
+          technology-driven services.
         </p>
 
         <p>
           Our team consists of experienced software engineers, UI/UX designers,
-          quality analysts, project managers, and cloud specialists who work
-          together to build secure and efficient applications. We focus on
-          delivering quality software while maintaining transparency,
-          professionalism, and customer satisfaction throughout every stage of
-          development.
+          cloud specialists, data analysts, and cybersecurity professionals who
+          work collaboratively to deliver reliable software products that exceed
+          client expectations.
         </p>
       </section>
 
+      {/* Mission */}
       <section className="about-section">
         <h2>Our Mission</h2>
-
         <p>
-          Our mission is to create innovative technology solutions that solve
-          real-world problems while delivering exceptional value to our clients.
-          We strive to build products that improve business productivity,
-          enhance customer experiences, and support sustainable digital growth.
+          Our mission is to empower businesses with intelligent software
+          solutions that improve productivity, streamline operations, and create
+          long-term value through innovation, quality, and continuous
+          improvement.
         </p>
       </section>
 
+      {/* Vision */}
       <section className="about-section">
         <h2>Our Vision</h2>
-
         <p>
-          To become a globally recognized software company known for innovation,
-          quality, integrity, and customer success. We aim to shape the future
-          through advanced technologies including Artificial Intelligence,
-          Machine Learning, Cloud Computing, Data Analytics, and Cybersecurity.
+          To become one of the world's leading technology companies recognized
+          for innovation, customer satisfaction, sustainability, and excellence
+          in software engineering.
         </p>
       </section>
 
-      <section className="about-section">
-        <h2>Our Services</h2>
-
-        <ul>
-          <li>Custom Software Development</li>
-          <li>Website Design and Development</li>
-          <li>Mobile Application Development</li>
-          <li>Cloud Computing Solutions</li>
-          <li>Artificial Intelligence Solutions</li>
-          <li>Machine Learning Applications</li>
-          <li>Cyber Security Services</li>
-          <li>Database Design and Management</li>
-          <li>API Development and Integration</li>
-          <li>UI/UX Design</li>
-          <li>Digital Transformation Consulting</li>
-          <li>Software Testing and Quality Assurance</li>
-        </ul>
-      </section>
-
-      <section className="about-section">
-        <h2>Why Choose Us?</h2>
-
-        <ul>
-          <li>✔ Experienced and Certified Development Team</li>
-          <li>✔ Customer-Centric Approach</li>
-          <li>✔ Agile Development Methodology</li>
-          <li>✔ Secure and Scalable Solutions</li>
-          <li>✔ Timely Project Delivery</li>
-          <li>✔ Affordable Pricing</li>
-          <li>✔ 24/7 Technical Support</li>
-          <li>✔ High Quality Standards</li>
-        </ul>
-      </section>
-
+      {/* Core Values */}
       <section className="about-section">
         <h2>Our Core Values</h2>
 
-        <div className="values">
-          <div>
-            <h3>Innovation</h3>
+        <ul>
+          <li>✔ Innovation and Creativity</li>
+          <li>✔ Customer Satisfaction</li>
+          <li>✔ Integrity and Transparency</li>
+          <li>✔ Teamwork and Collaboration</li>
+          <li>✔ Continuous Learning</li>
+          <li>✔ Quality Assurance</li>
+          <li>✔ Social Responsibility</li>
+          <li>✔ Professional Excellence</li>
+        </ul>
+      </section>
+
+      {/* Services */}
+      <section className="about-section">
+        <h2>Our Services</h2>
+
+        <div className="services-grid">
+
+          <div className="service-card">
+            <h3>Web Development</h3>
             <p>
-              We continuously embrace new technologies and creative thinking to
-              deliver advanced digital solutions.
+              We develop responsive, secure, and scalable web applications using
+              the latest technologies including React, Angular, Node.js, and
+              Django.
             </p>
           </div>
 
-          <div>
-            <h3>Integrity</h3>
+          <div className="service-card">
+            <h3>Mobile App Development</h3>
             <p>
-              We conduct business with honesty, transparency, and ethical
-              practices in every project.
+              We create Android and iOS applications with intuitive user
+              interfaces and high performance using Flutter and React Native.
             </p>
           </div>
 
-          <div>
-            <h3>Quality</h3>
+          <div className="service-card">
+            <h3>Cloud Solutions</h3>
             <p>
-              Delivering high-quality software is our highest priority, ensuring
-              reliability and long-term value.
+              Our cloud experts help businesses migrate, deploy, and manage
+              applications securely on AWS, Microsoft Azure, and Google Cloud.
             </p>
           </div>
 
-          <div>
-            <h3>Customer Success</h3>
+          <div className="service-card">
+            <h3>UI/UX Design</h3>
             <p>
-              We believe our success is directly connected to the success of our
-              clients and partners.
+              We design modern, user-friendly, and visually appealing interfaces
+              that enhance customer experience and engagement.
             </p>
           </div>
+
+          <div className="service-card">
+            <h3>Cybersecurity</h3>
+            <p>
+              Protecting business data through security assessments, monitoring,
+              penetration testing, and best cybersecurity practices.
+            </p>
+          </div>
+
+          <div className="service-card">
+            <h3>Artificial Intelligence</h3>
+            <p>
+              Delivering AI-powered applications including machine learning,
+              predictive analytics, automation, and intelligent decision-making
+              systems.
+            </p>
+          </div>
+
         </div>
       </section>
 
+      {/* Why Choose Us */}
+      <section className="about-section">
+        <h2>Why Choose TechNova Solutions?</h2>
+
+        <ul>
+          <li>Experienced Software Development Team</li>
+          <li>High-Quality Coding Standards</li>
+          <li>Agile Development Methodology</li>
+          <li>Affordable Pricing</li>
+          <li>24/7 Technical Support</li>
+          <li>Customer-Focused Development</li>
+          <li>Scalable Software Solutions</li>
+          <li>On-Time Project Delivery</li>
+        </ul>
+      </section>
+
+      {/* Statistics */}
       <section className="about-section">
         <h2>Company Statistics</h2>
 
-        <table border="1" cellPadding="10">
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Achievement</th>
-            </tr>
-          </thead>
+        <div className="stats">
 
+          <div className="stat-box">
+            <h3>500+</h3>
+            <p>Projects Completed</p>
+          </div>
+
+          <div className="stat-box">
+            <h3>250+</h3>
+            <p>Happy Clients</p>
+          </div>
+
+          <div className="stat-box">
+            <h3>50+</h3>
+            <p>Professional Developers</p>
+          </div>
+
+          <div className="stat-box">
+            <h3>15+</h3>
+            <p>Countries Served</p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Company Information */}
+      <section className="about-section">
+        <h2>Company Information</h2>
+
+        <table border="1" cellPadding="10">
           <tbody>
             <tr>
-              <td>Years of Experience</td>
-              <td>10+</td>
+              <td><strong>Company Name</strong></td>
+              <td>TechNova Solutions Pvt. Ltd.</td>
             </tr>
 
             <tr>
-              <td>Projects Completed</td>
-              <td>500+</td>
+              <td><strong>Founded</strong></td>
+              <td>2020</td>
             </tr>
 
             <tr>
-              <td>Global Clients</td>
-              <td>150+</td>
+              <td><strong>Headquarters</strong></td>
+              <td>Chennai, Tamil Nadu, India</td>
             </tr>
 
             <tr>
-              <td>Countries Served</td>
-              <td>20+</td>
+              <td><strong>Industry</strong></td>
+              <td>Software Development</td>
             </tr>
 
             <tr>
-              <td>Professional Employees</td>
-              <td>120+</td>
+              <td><strong>Email</strong></td>
+              <td>contact@technovasolutions.com</td>
+            </tr>
+
+            <tr>
+              <td><strong>Phone</strong></td>
+              <td>+91 98765 43210</td>
+            </tr>
+
+            <tr>
+              <td><strong>Working Hours</strong></td>
+              <td>Monday - Friday | 9:00 AM - 6:00 PM</td>
             </tr>
           </tbody>
         </table>
       </section>
 
+      {/* Closing Section */}
       <section className="about-section">
-        <h2>Contact Information</h2>
-
-        <p><strong>Company Name:</strong> TechNova Solutions Pvt. Ltd.</p>
-
-        <p><strong>Address:</strong> 123 Innovation Park, Bengaluru, Karnataka, India</p>
-
-        <p><strong>Email:</strong> info@technovasolutions.com</p>
-
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-
-        <p><strong>Website:</strong> www.technovasolutions.com</p>
+        <h2>Our Commitment</h2>
 
         <p>
-          We welcome collaborations, partnerships, and business inquiries.
-          Feel free to contact us for software development, consulting,
-          or technology solutions tailored to your business needs.
+          At TechNova Solutions, we believe technology should simplify business,
+          enhance customer experiences, and create sustainable growth. Our
+          commitment to quality, innovation, and continuous improvement enables
+          us to build reliable software solutions that make a meaningful impact
+          on organizations worldwide.
+        </p>
+
+        <p>
+          We continue to invest in research, emerging technologies, and talent
+          development to ensure our clients receive future-ready digital
+          solutions. Every project we undertake reflects our passion for
+          excellence and our dedication to delivering measurable business value.
         </p>
       </section>
-
-      <footer className="about-footer">
-        <h3>Building Tomorrow's Technology Today</h3>
-
-        <p>
-          © 2026 TechNova Solutions Pvt. Ltd. All Rights Reserved.
-        </p>
-      </footer>
 
     </div>
   );
